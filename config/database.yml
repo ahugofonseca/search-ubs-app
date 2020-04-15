@@ -1,0 +1,20 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: postgres
+  password: postgres
+
+development:
+  <<: *default
+  database: search-ubs-app_development
+
+test:
+  <<: *default
+  database: search-ubs-app_test
+
+production:
+  <<: *default
+  database: search-ubs-app_production
+  username: search-ubs-app
+  password: <%= ENV['SEARCH-UBS-APP_DATABASE_PASSWORD'] %>
