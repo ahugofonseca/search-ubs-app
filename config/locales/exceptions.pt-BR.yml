@@ -1,0 +1,5 @@
+pt-BR:
+  api:
+    missing_query_parameter_error: "Você deve informar uma coordenada valida através do parametro: 'query'"
+    not_found: Este registro não existe ou foi excluído. Verifique seus parâmetros e tente novamente ou entre em contato com o administrador do sistema
+    internal_error: Desculpe, algo deu errado. Por favor, tente novamente ou entre em contato com o administrador do sistema

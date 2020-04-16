@@ -60,6 +60,7 @@ RSpec.configure do |config|
   #     end
 
   config.include UbsData
+  config.include PagyRspec
 
   # The different available types are documented in the features, such as in
   # https://relishapp.com/rspec/rspec-rails/docs

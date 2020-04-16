@@ -60,8 +60,11 @@ GEM
       railties (>= 4.2.0)
     faker (1.9.1)
       i18n (>= 0.7)
+    fast_jsonapi (1.5)
+      activesupport (>= 4.2)
     ffi (1.12.2)
     foreman (0.87.1)
+    geocoder (1.4.7)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     httparty (0.17.0)
@@ -93,6 +96,7 @@ GEM
     nio4r (2.5.2)
     nokogiri (1.10.9)
       mini_portile2 (~> 2.4.0)
+    pagy (3.7.5)
     pg (1.2.3)
     pry (0.13.0)
       coderay (~> 1.1)
@@ -181,9 +185,12 @@ DEPENDENCIES
   database_cleaner
   factory_bot_rails
   faker
+  fast_jsonapi
   foreman
+  geocoder
   httparty
   listen (>= 3.0.5, < 3.2)
+  pagy
   pg (>= 0.18, < 2.0)
   pry
   pry-rails
