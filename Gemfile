@@ -20,6 +20,8 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 # JSON serializer to Rails Active Model
 gem 'fast_jsonapi'
+# Geocoding solution
+gem 'geocoder'
 # HTTP Wrapper
 gem 'httparty'
 # Pagination to Rails app
