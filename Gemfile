@@ -18,8 +18,12 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 ###### OTHERS GEMS #############################################################
 
+# JSON serializer to Rails Active Model
+gem 'fast_jsonapi'
 # HTTP Wrapper
 gem 'httparty'
+# Pagination to Rails app
+gem 'pagy'
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS)
 gem 'rack-cors'
 
