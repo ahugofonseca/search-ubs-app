@@ -4,9 +4,7 @@ require_relative '../../rails_helper'
 
 RSpec.describe BrazilianGovPublicData::UbsDefaultPresenter do
   let!(:presenter_response) do
-    BrazilianGovPublicData::UbsDefaultPresenter.new(
-      brazilian_gov_public_data_response
-    ).data
+    BrazilianGovPublicData::UbsDefaultPresenter.new(ubs_public_data).data
   end
 
   it 'should return correctly formatted response' do
