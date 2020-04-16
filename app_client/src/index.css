@@ -11,3 +11,47 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.header-app {
+  background-color: rgb(0, 206, 213);
+}
+
+h5.company-name {
+  margin: 2px;
+  padding: 0;
+  font-size: 13px;
+}
+
+h6.company-cnpj {
+  margin: 2px;
+  padding: 0;
+  font-size: 14px;
+  font-weight: 500;
+  color: rgb(28, 143, 149);
+}
+
+/* SPACING HELPERS */
+.ma-0 {
+  margin: 0;
+}
+
+.pa-0 {
+  padding: 0;
+}
+
+.pt-1 {
+  padding-top: 15px;
+}
+
+.height-inherit {
+  height: inherit;
+}
+
+/* SPACING HELPERS */
+.bl-1 {
+  border-right: 1px solid;
+}
+
+.br-1 {
+  border-left: 1px solid;
+}
