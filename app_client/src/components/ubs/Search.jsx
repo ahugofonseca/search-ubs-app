@@ -9,18 +9,6 @@ class SearchUbs extends Component {
     this.state = {
       ubsName: 'UBS Jardim Europa'
     }
-
-    this.adjustSearchLabel.bind(this)
-  }
-
-  componentDidMount() {
-    this.adjustSearchLabel()
-  }
-
-  adjustSearchLabel() {
-    let element = document.getElementById('search-ubs-by-latlng')
-
-    console.log(element);
   }
 
   render() {

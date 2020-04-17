@@ -7,10 +7,6 @@ import './Boxes.scss'
 class Boxes extends Component {
   constructor(props) {
     super(props)
-
-    this.state = {
-      boxesCount: [0, 1, 2, 3, 4]
-    }
   }
 
   render() {
@@ -21,9 +17,9 @@ class Boxes extends Component {
             <Col m={12}>
               <SearchUbs />
             </Col>
-            {this.state.boxesCount.map((field, index) => (
+            {this.props.ubsEntries.map((entry, index) => (
               <Col m={12}>
-                <Box index={index} />
+                <Box index={index} ubs={entry} />
               </Col>
             ))}
           </Row>

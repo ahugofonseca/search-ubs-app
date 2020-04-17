@@ -17,14 +17,14 @@ class Box extends Component {
     return (
       <CardPanel className="white mb-0">
         <div className="card-title">
-          {this.props.index + 1}. UBS Jardim Europa
+          {this.props.index + 1}. {this.props.ubs.name}
         </div>
 
         <div className="card-text">
-          <p>Rua Pascal, 1382 - Jardim Europa - SP</p>
+          <p> {this.props.ubs.address} - {this.props.ubs.city} </p>
 
           <p className="ma-0"><b>Telefone</b></p>
-          <p className="ma-0">011 4157-8945</p>
+          <p className="ma-0"> {this.props.ubs.phone} </p>
         </div>
       </CardPanel>
     )
