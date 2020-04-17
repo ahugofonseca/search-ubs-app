@@ -1,4 +1,5 @@
 import React from 'react';
+import './Header.scss';
 import { Container, Icon, Row, Col } from 'react-materialize';
 
 const Header = () => (
@@ -8,7 +9,7 @@ const Header = () => (
         <Icon className="right" large>menu</Icon>
       </Col>
       <Col m={3}>
-        <Icon large>search</Icon>
+        <Icon className="secundary" large>search</Icon>
       </Col>
       <Col m={4}>
         <h5 className="ma-0 pt-1 center"><b>bionexo</b></h5>
