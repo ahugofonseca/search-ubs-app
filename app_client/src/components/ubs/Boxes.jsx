@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { Row, Col } from 'react-materialize';
-import Box from './Box';
 import SearchUbs from './Search';
+import Box from './Box';
+import Paginator from './Paginator';
 import './Boxes.scss'
 
 class Boxes extends Component {
@@ -27,6 +28,13 @@ class Boxes extends Component {
                 />
               </Col>
             ))}
+              <Col m={12}>
+                <Paginator
+                  pagination={this.props.pagination}
+                  lastCoordinates={this.props.lastCoordinates}
+                  findUbs={this.props.findUbs}
+                />
+              </Col>
           </Row>
         </div>
       </div>
