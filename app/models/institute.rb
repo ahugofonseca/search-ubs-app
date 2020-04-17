@@ -5,7 +5,7 @@ class Institute < ApplicationRecord
   reverse_geocoded_by :latitude, :longitude
 
   # Validations
-  validates_presence_of :latitude, :longitude, :name, :address, :city, :phone
+  validates_presence_of :latitude, :longitude, :name, :address, :city
   validates_uniqueness_of :latitude, :longitude
 
   # Alias and Delegators
