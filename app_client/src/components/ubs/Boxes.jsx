@@ -19,7 +19,12 @@ class Boxes extends Component {
             </Col>
             {this.props.ubsEntries.map((entry, index) => (
               <Col m={12}>
-                <Box index={index} ubs={entry} />
+                <Box
+                  index={index}
+                  ubs={entry}
+                  activateMarker={this.props.activateMarker}
+                  inactivateMarker={this.props.inactivateMarker}
+                />
               </Col>
             ))}
           </Row>

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Boxes from '../ubs/Boxes';
 import L from 'leaflet'
-import { Map, TileLayer, Marker, Tooltip, Popup } from 'react-leaflet';
+import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
 import './Maps.scss'
 
 export const unselectedIcon = (index)=> {
@@ -33,12 +33,16 @@ class MapBase extends Component<{}, State> {
       ubs: {
         entries: []
       },
-      lat: 51.5,
-      lng: -0.1,
-      zoom: 12
+      lat: -23.5505199,
+      lng: -46.6333094,
+      zoom: 12,
+      map: null
     }
 
     this.getData = this.getData.bind(this)
+    this.activateMarker = this.activateMarker.bind(this)
+    this.inactivateMarker = this.inactivateMarker.bind(this)
+    this.toggleMarkerStatus = this.toggleMarkerStatus.bind(this)
   }
 
   componentDidMount() {
@@ -47,7 +51,6 @@ class MapBase extends Component<{}, State> {
 
   getData(coordenates) {
     let url = '/api/v1/find_ubs?query='+coordenates
-    console.log(url);
 
     axios.get(url)
       .then(response => {
@@ -77,31 +80,60 @@ class MapBase extends Component<{}, State> {
     }
   }
 
+  toggleMarkerStatus(geocode, index, action) {
+    this.state.map.leafletElement.eachLayer(function(layer) {
+
+      if (layer instanceof L.Marker) {
+        let latitude = layer.getLatLng().lat
+        let longitude = layer.getLatLng().lng
+
+        if (latitude == geocode.lat && longitude == geocode.long) {
+          layer.setIcon(action(index))
+        }
+      }
+
+    })
+  }
+
+  activateMarker(geocode, index) {
+    this.toggleMarkerStatus(geocode, index, selectedIcon)
+  }
+
+  inactivateMarker(geocode, index) {
+    this.toggleMarkerStatus(geocode, index, unselectedIcon)
+  }
+
   render() {
     const position = [this.state.lat, this.state.lng]
 
     return (
       <div>
-        <Boxes ubsEntries={this.state.ubs.entries} ref="Boxes"/>
+        <Boxes
+          ubsEntries={this.state.ubs.entries}
+          activateMarker={this.activateMarker}
+          inactivateMarker={this.inactivateMarker}
+        />
 
-        <Map center={position} zoom={this.state.zoom}>
+        <Map center={position} zoom={this.state.zoom} ref={(ref) => { this.state.map = ref; }}>
           <TileLayer
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
 
             {this.state.ubs.entries.map((entry, index) => {
               return(
-                <Marker position={[entry.geocode.lat, entry.geocode.long]} icon={unselectedIcon(index+1)}>
-                  <Popup className="custom-popup">
-                    <div className="popup-title">
-                      <span><b> {entry.name} </b></span>
-                    </div>
+                <div id={index+1}>
+                  <Marker position={[entry.geocode.lat, entry.geocode.long]} icon={unselectedIcon(index+1)}>
+                    <Popup className="custom-popup">
+                      <div className="popup-title">
+                        <span><b> {entry.name} </b></span>
+                      </div>
 
-                    <div className="popup-text">
-                      <span> {entry.address} - {entry.city} </span>
-                    </div>
-                  </Popup>
-                </Marker>
+                      <div className="popup-text">
+                        <span> {entry.address} - {entry.city} </span>
+                      </div>
+                    </Popup>
+                  </Marker>
+                </div>
               )
             })}
 
