@@ -14,7 +14,7 @@ class Institute < ApplicationRecord
 
   # Scopes
   scope :ubs_near, lambda { |coordinates|
-    near(coordinates&.split(',')&.map(&:to_f), 5, units: :km, order: :distance)
+    near(coordinates&.split(',')&.map(&:to_f), 15, units: :km, order: :distance)
   }
 
   # Methods

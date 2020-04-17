@@ -1,0 +1,17 @@
+.container-box {
+  position: absolute;
+  z-index: 401;
+  width: 19%;
+  margin-left: 50px;
+  margin-top: 10px;
+}
+
+.ubs-boxes {
+  position: relative;
+  height: 701px;
+  overflow-y: overlay;
+}
+
+.ubs-boxes::-webkit-scrollbar {
+	width: 0px;
+}

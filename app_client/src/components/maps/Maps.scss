@@ -1,0 +1,50 @@
+.leaflet-container {
+  height: 705px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.custom-popup {
+  left: -10px !important;
+
+  .leaflet-popup-content-wrapper {
+    border-radius: 7px;
+    border: 2px solid #68d8de;
+
+    .leaflet-popup-content {
+      width: 220px;
+    }
+  }
+
+  .leaflet-popup-tip-container {
+    left: 15%;
+    overflow: initial;
+
+    .leaflet-popup-tip {
+      box-shadow: unset;
+      border-bottom: 2px solid #68d8de;
+      border-right: 2px solid #68d8de;
+      border-radius: 2px;
+    }
+  }
+}
+
+.marker-label {
+  position: absolute;
+  top: 25px;
+  left: 33px;
+  font-weight: bold;
+  color: white;
+}
+
+.popup-title {
+  color: #68d8de;
+  font-weight: bolder;
+  font-size: 17px;
+  padding-bottom: 4px;
+}
+
+.popup-text p span {
+  color: rgba(0,0,0,0.87);
+  text-align: left;
+}
