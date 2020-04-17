@@ -15,10 +15,10 @@ class Boxes extends Component {
         <div className="ubs-boxes" id="style-1">
           <Row>
             <Col m={12}>
-              <SearchUbs />
+              <SearchUbs findUbs={this.props.findUbs} />
             </Col>
             {this.props.ubsEntries.map((entry, index) => (
-              <Col m={12}>
+              <Col m={12} key={entry.id+'_'+index}>
                 <Box
                   index={index}
                   ubs={entry}

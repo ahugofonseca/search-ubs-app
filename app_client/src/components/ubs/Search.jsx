@@ -7,21 +7,40 @@ class SearchUbs extends Component {
     super(props)
 
     this.state = {
-      ubsName: 'UBS Jardim Europa'
+      latLng: ''
     }
+
+    this.submit = this.submit.bind(this)
+  }
+
+  submit(e) {
+    e.preventDefault()
+
+    this.sendRequest(this.resetDataFields)
+  }
+
+  sendRequest(resetSearchField) {
+    this.props.findUbs(this.state.latLng.value)
+  }
+
+  resetSearchField() {
+    this.setState({
+      latLng: ''
+    })
   }
 
   render() {
     return (
-      <nav class="black">
-        <div class="nav-wrapper">
-          <form>
-            <div class="input-field col">
+      <nav className="black">
+        <div className="nav-wrapper">
+          <form onSubmit={this.submit}>
+            <div className="input-field col">
 
               <TextInput
                 id="search-ubs-by-latlng"
                 icon="search"
                 label="Busca"
+                ref={input => this.state.latLng = input}
               />
             </div>
           </form>

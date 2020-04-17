@@ -43,14 +43,35 @@ class MapBase extends Component<{}, State> {
     this.activateMarker = this.activateMarker.bind(this)
     this.inactivateMarker = this.inactivateMarker.bind(this)
     this.toggleMarkerStatus = this.toggleMarkerStatus.bind(this)
+    this.flyToCoordinates = this.flyToCoordinates.bind(this)
   }
 
   componentDidMount() {
     this.getUserGeolocation(this.getData)
   }
 
-  getData(coordenates) {
-    let url = '/api/v1/find_ubs?query='+coordenates
+  flyToCoordinates(coordinates) {
+    let position
+
+    if (coordinates instanceof Array) {
+      position = L.latLng(parseFloat(coordinates[0]), parseFloat(coordinates[1]))
+    } else {
+      let splited = coordinates.split(', ')
+
+      if (splited.lenght != 2) { splited = coordinates.split(',') }
+
+      position = L.latLng(parseFloat(splited[0]), parseFloat(splited[1]))
+    }
+
+    console.log(position);
+    this.state.map.leafletElement.flyTo(position, 12)
+    //
+  }
+
+  getData(coordinates) {
+    this.flyToCoordinates(coordinates)
+
+    let url = '/api/v1/find_ubs?query='+coordinates
 
     axios.get(url)
       .then(response => {
@@ -110,6 +131,7 @@ class MapBase extends Component<{}, State> {
       <div>
         <Boxes
           ubsEntries={this.state.ubs.entries}
+          findUbs={this.getData}
           activateMarker={this.activateMarker}
           inactivateMarker={this.inactivateMarker}
         />
@@ -121,8 +143,8 @@ class MapBase extends Component<{}, State> {
 
             {this.state.ubs.entries.map((entry, index) => {
               return(
-                <div id={index+1}>
-                  <Marker position={[entry.geocode.lat, entry.geocode.long]} icon={unselectedIcon(index+1)}>
+                <div key={entry.id}>
+                  <Marker position={[entry.geocode.lat, entry.geocode.long]} icon={unselectedIcon(index+1)} key={entry.id}>
                     <Popup className="custom-popup">
                       <div className="popup-title">
                         <span><b> {entry.name} </b></span>
