@@ -35,7 +35,6 @@ class SearchUbs extends Component {
         <div className="nav-wrapper">
           <form onSubmit={this.submit}>
             <div className="input-field col">
-
               <TextInput
                 id="search-ubs-by-latlng"
                 icon="search"

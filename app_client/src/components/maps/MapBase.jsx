@@ -63,23 +63,24 @@ class MapBase extends Component<{}, State> {
       position = L.latLng(parseFloat(splited[0]), parseFloat(splited[1]))
     }
 
-    console.log(position);
-    this.state.map.leafletElement.flyTo(position, 12)
-    //
+    // this.state.map.leafletElement.flyTo(position, 12)
+    this.setState({
+      lat: position.lat,
+      lng: position.lng
+    })
   }
 
-  getData(coordinates) {
+  getData(coordinates, page = 1) {
+    console.log(page);
     this.flyToCoordinates(coordinates)
 
-    let url = '/api/v1/find_ubs?query='+coordinates
+    let url = '/api/v1/find_ubs?query='+coordinates+'&page='+page
 
     axios.get(url)
       .then(response => {
         this.setState({
           ubs: response.data
         })
-
-        console.log(response.data);
       })
       .catch(error =>
         console.error(error)
@@ -131,6 +132,8 @@ class MapBase extends Component<{}, State> {
       <div>
         <Boxes
           ubsEntries={this.state.ubs.entries}
+          pagination={this.state.ubs}
+          lastCoordinates={position}
           findUbs={this.getData}
           activateMarker={this.activateMarker}
           inactivateMarker={this.inactivateMarker}

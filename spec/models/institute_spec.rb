@@ -24,7 +24,6 @@ RSpec.describe Institute, type: :model do
   it { is_expected.to validate_presence_of(:name) }
   it { is_expected.to validate_presence_of(:address) }
   it { is_expected.to validate_presence_of(:city) }
-  it { is_expected.to validate_presence_of(:phone) }
 
   # Uniqueness validations
   it { is_expected.to validate_uniqueness_of(:latitude) }
@@ -52,7 +51,7 @@ RSpec.describe Institute, type: :model do
       data = Institute.default_presenter(@pagy, @ubs)
       entry_sample = data[:entries].sample
 
-      expect(entry_sample.keys).to eq(%i[id name address city phone geocode])
+      expect(entry_sample.keys).to eq(%i[id name address city geocode phone])
     end
   end
 end
