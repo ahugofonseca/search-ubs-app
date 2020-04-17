@@ -1,15 +1,10 @@
 import React from "react";
-import { Container, Row, Col } from 'react-materialize';
+import { Row, Col } from 'react-materialize';
+import MapBase from './components/maps/MapBase';
 
 const Main = () => (
   <main>
-    <Container>
-      <Row>
-        <Col>
-          <p>MAPA</p>
-        </Col>
-      </Row>
-    </Container>
+    <MapBase />
   </main>
 );
 
